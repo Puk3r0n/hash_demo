@@ -14,8 +14,7 @@ start:
 lint:
 	 pylint src
 
-tests: tests
+test: test
 
-# Target to run tests
-tests:
-	pytest tests/test.py
+test:
+	PYTHONPATH=$$PYTHONPATH:$(pwd) pytest tests

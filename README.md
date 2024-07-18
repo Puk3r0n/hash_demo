@@ -36,3 +36,7 @@ results using the Loguru logging library.
 ```
     make setup
 ```
+## Test project
+```
+    make test
+```
