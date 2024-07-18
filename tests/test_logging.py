@@ -5,7 +5,7 @@ import os
 
 def test_logging_setup():
     log_message = "This is a test log message"
-    log_file_path = "test.log"  # Имя файла лога
+    log_file_path = "test.log"
 
     logger.add(log_file_path)
 
@@ -16,6 +16,5 @@ def test_logging_setup():
     log_contents = open(log_file_path).read()
     assert log_message in log_contents
 
-    # Удаление файла лога
     os.remove(log_file_path)
 
