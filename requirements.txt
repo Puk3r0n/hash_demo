@@ -1,0 +1,8 @@
+aiohttp
+loguru
+aiofiles
+pydantic
+hashlib
+asyncio
+tempfile
+os
