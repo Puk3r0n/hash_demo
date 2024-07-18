@@ -1,3 +1,7 @@
+"""
+Module responsible for downloading files and calculating their hashes.
+"""
+
 import os
 import tempfile
 import asyncio
@@ -5,10 +9,19 @@ import hashlib
 import aiofiles
 import aiohttp
 from loguru import logger
-from .settings import settings
 
 
 async def download_file(session: aiohttp.ClientSession, file_url: str) -> str:
+    """
+    Download a file from the given URL using the provided aiohttp session.
+
+    Args:
+        session (aiohttp.ClientSession): Aiohttp client session.
+        file_url (str): URL of the file to download.
+
+    Returns:
+        str: Name of the temporary file where the downloaded content is saved.
+    """
     async with session.get(file_url) as response:
         response.raise_for_status()
         temp_file = tempfile.NamedTemporaryFile(delete=False)
@@ -19,6 +32,14 @@ async def download_file(session: aiohttp.ClientSession, file_url: str) -> str:
 
 
 async def download_repository_head(session: aiohttp.ClientSession, api_url: str) -> None:
+    """
+    Download files recursively from the repository API endpoint.
+
+    Args:
+        session (aiohttp.ClientSession): Aiohttp client session.
+        api_url (str): API URL of the repository.
+
+    """
     async with session.get(api_url) as response:
         response.raise_for_status()
         files = await response.json()
@@ -44,6 +65,13 @@ async def download_repository_head(session: aiohttp.ClientSession, api_url: str)
 
 
 async def calculate_hashes(files: list[str]) -> None:
+    """
+    Calculate SHA256 hashes for a list of files and log the results.
+
+    Args:
+        files (list[str]): List of file paths.
+
+    """
     for file in files:
         sha256_hash = hashlib.sha256()
         async with aiofiles.open(file, 'rb') as f:

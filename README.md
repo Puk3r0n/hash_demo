@@ -1,27 +1,38 @@
 
 <h1 align="center">Deploy the project</h1>
 
-<h2>Download the project</h2>
+## Description
+This project is a Python application designed to download files from a repository
+using the Gitea API. It retrieves files recursively, calculates their SHA256 hashes, and logs the 
+results using the Loguru logging library.
+
+## Python version
+```
+    python 3.9
+```
+
+## Download the project
 
 ```
-  git clone git@github.com:Puk3r0n/hash_demo.git
+    git clone git@github.com:Puk3r0n/hash_demo.git
 ```
 
 ```
-  cd hash_demo
+    cd hash_demo
 ```
 
-<h2> Сreate a virtual environment and install dependencies</h2>
+## Сreate a virtual environment and install dependencies
 
 ```
     python3 -m venv venv
     source venv/bin/activate
-    
 ```
-`python3 -m pip install -r requirements.txt` </br> </br>
-<h2> Run file main.py</h2>
+## Install dependencies
+```
+    make dependencies
+```
 
+## Run project
 ```
-  cd hash_demo
-  python -i main.py
+    make setup
 ```
