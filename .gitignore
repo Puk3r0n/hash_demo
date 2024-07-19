@@ -12,4 +12,8 @@ env/
 .DS_Store
 
 
+<<<<<<< HEAD
 .idea/
+=======
+.idea/
+>>>>>>> 1ef7992b13a65883cdb242c72fc817879a2bdee0
